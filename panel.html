@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="panel.css">
+</head>
+<body>
+  <div class="toolbar">
+    <div class="toolbar-row">
+      <div class="filter-group">
+        <label for="url-pattern">URL pattern</label>
+        <input type="text" id="url-pattern" placeholder="e.g. collect" value="collect" spellcheck="false">
+      </div>
+      <div class="filter-group grow">
+        <label for="payload-regex">Payload regex</label>
+        <input type="text" id="payload-regex" placeholder="e.g. page_view|click" spellcheck="false">
+      </div>
+      <div class="toolbar-actions">
+        <button id="pause-btn" title="Pause/Resume capture">⏸</button>
+        <button id="clear-btn" title="Clear all requests">🗑</button>
+      </div>
+    </div>
+    <div class="columns-row">
+      <label>Columns</label>
+      <div id="column-chips"></div>
+      <input type="text" id="add-column-input" placeholder="field name + Enter" spellcheck="false">
+    </div>
+    <div class="status-bar">
+      <span id="status">Waiting for requests…</span>
+      <span id="counts"></span>
+    </div>
+  </div>
+
+  <div id="request-list"></div>
+
+  <div id="detail-overlay" class="hidden">
+    <div class="detail-panel">
+      <div class="detail-header">
+        <span id="detail-title">Request Detail</span>
+        <button id="detail-close">✕</button>
+      </div>
+      <div class="detail-tabs">
+        <button class="tab active" data-tab="payload">Payload</button>
+        <button class="tab" data-tab="headers">Headers</button>
+        <button class="tab" data-tab="response">Response</button>
+      </div>
+      <pre id="detail-content" class="detail-body"></pre>
+    </div>
+  </div>
+
+  <script src="panel.js"></script>
+</body>
+</html>
