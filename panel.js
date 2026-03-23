@@ -135,6 +135,11 @@
     return undefined;
   }
 
+  function formatValue(val) {
+    if (typeof val === "number") return String(Math.trunc(val));
+    return String(val);
+  }
+
   function extractColumnValue(entry, fieldName) {
     if (!entry.parsedPayload) {
       try {
@@ -145,7 +150,7 @@
     }
     if (!entry.parsedPayload) return "—";
     const val = findLeafValue(entry.parsedPayload, fieldName);
-    return val === undefined ? "—" : String(val);
+    return val === undefined ? "—" : formatValue(val);
   }
 
   // --- Column management ---
